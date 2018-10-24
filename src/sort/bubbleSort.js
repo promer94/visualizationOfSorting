@@ -1,3 +1,10 @@
+/**
+ * @description the bubble sort implementation
+ *
+ * @export
+ * @param {!number[]} data
+ * @returns the process of sorting
+ */
 export function bubbleSort(data) {
   const process = [[...data]]
   for (let i = 0; i < data.length - 1; i += 1) {

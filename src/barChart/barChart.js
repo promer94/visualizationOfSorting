@@ -1,7 +1,15 @@
 import { scaleLinear } from 'd3-scale'
 import { transition } from 'd3-transition'
 import { extent, max } from 'd3-array'
-
+/**
+ *
+ * @description visualization of in place sorting algorithm
+ * @export
+ * @param {svgElement} svg
+ * @param {object[]} data
+ *
+ *
+ */
 export function updateBars(svg, data) {
   const duration = transition().duration(2000)
   const height = max([...data, 30])
@@ -32,7 +40,6 @@ export function updateBars(svg, data) {
     .enter()
     .append('rect')
     .attr('width', rectWidth)
-    .attr('fill', 'blue')
     .attr('stroke', '#fff')
 
   bar = enter
