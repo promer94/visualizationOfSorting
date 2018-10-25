@@ -1,5 +1,5 @@
 import { selectAll, select } from 'd3-selection'
-import { bubbleVisual } from './visual'
+import * as visual from './visual'
 
 document.addEventListener('DOMContentLoaded', function () {
   /* Create container and svg element  */
@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', function () {
     .exit()
     .remove()
   const svg = select('div').append('svg')
-  bubbleVisual(svg, [60, 10, 30, 20, 80, 40, 50, 70])
+  visual.selectVisual(svg, [60, 10, 30, 20, 80, 40, 50, 70])
 })
