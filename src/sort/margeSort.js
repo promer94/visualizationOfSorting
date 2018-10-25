@@ -5,10 +5,16 @@ import { merge } from './utils'
  * @param {!number} lo The start index
  * @param {!number} hi The end index
  */
-export function mergeSort(data, lo, hi) {
+export function mergeSort(data, lo, hi, process) {
   if (hi <= lo) return
   const mid = Math.floor(lo + (hi - lo) / 2)
-  mergeSort(data, lo, mid)
-  mergeSort(data, mid + 1, hi)
-  merge(data, lo, mid, hi)
+  if (Array.isArray(process)) {
+    mergeSort(data, lo, mid, process)
+    mergeSort(data, mid + 1, hi, process)
+    merge(data, lo, mid, hi, process)
+  } else {
+    mergeSort(data, lo, mid)
+    mergeSort(data, mid + 1, hi)
+    merge(data, lo, mid, hi)
+  }
 }

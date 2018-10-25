@@ -1,7 +1,8 @@
 import { selectAll, select } from 'd3-selection'
-import * as sort from './sort'
-import { updateBars } from './barChart'
+import { bubbleVisual } from './visual'
+
 document.addEventListener('DOMContentLoaded', function() {
+  /* Create container and svg element  */
   const divElement = document.createElement('div')
   divElement.className = 'container'
   document.querySelector('body').appendChild(divElement)
@@ -9,14 +10,5 @@ document.addEventListener('DOMContentLoaded', function() {
     .exit()
     .remove()
   const svg = select('div').append('svg')
-  const process = sort.bubbleSort([60, 10, 30, 20, 80, 40, 50, 70])
-  console.log(process)
-  const length = process.length
-  let index = 0
-  updateBars(svg, process[index])
-  const timer = setInterval(() => {
-    index += 1
-    if (index === length - 1) clearInterval(timer)
-    updateBars(svg, process[index])
-  }, 3000)
+  bubbleVisual(svg, [60, 10, 30, 20, 80, 40, 50, 70])
 })

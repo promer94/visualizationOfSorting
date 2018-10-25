@@ -10,13 +10,14 @@ import { extent, max } from 'd3-array'
  *
  *
  */
-export function updateBars(svg, data) {
-  const duration = transition().duration(2000)
-  const height = max([...data, 30])
+export function updateBar(svg, data) {
+  const duration = transition().duration(1000)
+  const { data: a, i, j } = data
+  const height = max([...a, 30])
   const rectWidth = 20
   const margin = { top: 10, right: 10, bottom: 10, left: 10 }
-  const width = rectWidth * max([5, data.length]) + margin.left + margin.right
-  const [_, yMax] = extent(data) //eslint-disable-line
+  const width = rectWidth * max([5, a.length]) + margin.left + margin.right
+  const [_, yMax] = extent(a) //eslint-disable-line
 
   svg.attr('width', width).attr('height', height)
   const yScale = scaleLinear()
@@ -30,13 +31,8 @@ export function updateBars(svg, data) {
 
   let bar = svg.selectAll('rect')
 
-  bar
-    .exit()
-    .transition(duration)
-    .attr('x', (d, i) => margin.left + i * rectWidth)
-    .remove()
   const enter = bar
-    .data(data)
+    .data(a)
     .enter()
     .append('rect')
     .attr('width', rectWidth)
@@ -46,7 +42,10 @@ export function updateBars(svg, data) {
     .merge(bar)
     .attr('y', d => yScale(d))
     .attr('height', d => heightScale(d))
+    .attr(
+      'fill',
+      (d, index) => (index === i ? 'red' : index === j ? 'red' : 'blue')
+    )
     .transition(duration)
     .attr('x', (d, i) => margin.left + i * rectWidth)
-    .transition(duration)
 }
