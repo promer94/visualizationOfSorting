@@ -1,7 +1,7 @@
 import { selectAll, select } from 'd3-selection'
 import { bubbleVisual } from './visual'
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   /* Create container and svg element  */
   const divElement = document.createElement('div')
   divElement.className = 'container'

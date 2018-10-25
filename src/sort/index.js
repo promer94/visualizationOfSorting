@@ -1,3 +1,3 @@
 export * from './selectSort'
-export * from './margeSort'
+export * from './mergeSort'
 export * from './bubbleSort'

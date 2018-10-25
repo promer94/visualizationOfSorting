@@ -7,8 +7,8 @@
  * @param {!number} mid the end of first sorted part of the data
  * @param {!number} hi The start of second sorted part of the array
  */
-export function merge(data, lo, mid, hi, process) {
-  if (process) {
+export function merge (data, lo, mid, hi, process) {
+  if (Array.isArray(process)) {
     const aux = [...data]
     let i = lo
     let j = mid + 1
@@ -44,10 +44,28 @@ export function merge(data, lo, mid, hi, process) {
     }
   }
 }
-export function less(a, b) {
+
+/**
+ *
+ *
+ * @export
+ * @param {!number} a
+ * @param {!number} b
+ * @returns
+ */
+export function less (a, b) {
   return a - b <= 0
 }
-export function exchange(data, i, j) {
+
+/**
+ *
+ *
+ * @export
+ * @param {!number[]} data
+ * @param {!number} i
+ * @param {!number} j
+ */
+export function exchange (data, i, j) {
   const temp = data[i]
   data[i] = data[j]
   data[j] = temp

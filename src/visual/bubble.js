@@ -1,7 +1,14 @@
 import { updateBar } from './updateBar'
 import { bubbleSort } from '../sort'
 
-export function bubbleVisual(svg, data) {
+/**
+ * @description The visualization of bubble sort
+ *
+ * @export
+ * @param {*} svg
+ * @param {number[]} data
+ */
+export function bubbleVisual (svg, data) {
   const process = bubbleSort(data)
   const length = process.length
   let index = 0

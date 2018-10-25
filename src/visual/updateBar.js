@@ -1,6 +1,7 @@
 import { scaleLinear } from 'd3-scale'
 import { transition } from 'd3-transition'
 import { extent, max } from 'd3-array'
+
 /**
  *
  * @description visualization of in place sorting algorithm
@@ -10,7 +11,7 @@ import { extent, max } from 'd3-array'
  *
  *
  */
-export function updateBar(svg, data) {
+export function updateBar (svg, data) {
   const duration = transition().duration(1000)
   const { data: a, i, j } = data
   const height = max([...a, 30])

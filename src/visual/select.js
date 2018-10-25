@@ -1,13 +1,14 @@
 import { selectSort } from '../sort'
 import { updateBar } from './updateBar'
+
 /**
  *
- *
+ * @description The visualization of select sort
  * @export
- * @param {*} svg
- * @param {*} data
+ * @param {svgElement} svg
+ * @param {number[]} data
  */
-export function selectVisual(svg, data) {
+export function selectVisual (svg, data) {
   const process = selectSort(data)
 
   /* visualized the process of sorting */

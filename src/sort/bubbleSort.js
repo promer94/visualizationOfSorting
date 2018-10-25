@@ -1,5 +1,13 @@
 import { exchange, less } from './utils'
-export function bubbleSort(data) {
+
+/**
+ *
+ * @description the implementation of bubble sort
+ * @export
+ * @param {!number[]} data
+ * @returns
+ */
+export function bubbleSort (data) {
   const process = []
   for (let i = 0; i < data.length - 1; i++) {
     let count = 0

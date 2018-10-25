@@ -1,6 +1,7 @@
 /* globals test,expect */
 import * as sort from './index'
-test('margeSort', () => {
+
+test('mergeSort', () => {
   const a = [10, 9, 2, 12, 6, 5, 13, 0]
   const b = [...a]
   a.sort((a, b) => a - b)
@@ -16,7 +17,6 @@ test('bubbleSort', () => {
   const b = [...a]
   a.sort((a, b) => a - b)
   sort.bubbleSort(b)
-  console.log(b)
   a.forEach((v, i) => {
     expect(b[i]).toEqual(v)
   })
