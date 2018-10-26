@@ -1,4 +1,4 @@
-import { exchange, less } from './utils'
+import { exchange, less } from '../utils'
 
 /**
  * @description the implementation of select sort

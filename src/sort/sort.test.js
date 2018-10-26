@@ -1,20 +1,20 @@
 /* globals test,expect,describe */
 import * as sort from './index'
-import { generator } from './utils'
+import { generator } from '../utils'
 
 describe('sort', () => {
   test('mergeSort', () => {
-    const a = generator(500)
+    const a = generator(10000)
     const b = Array.from(a)
     a.sort((a, b) => a - b)
-    sort.mergeSort(b, 0, b.length - 1)
+    sort.mergeSort(b, true)
     a.forEach((v, i) => {
       expect(v).toEqual(b[i])
     })
   })
 
   test('bubbleSort', () => {
-    const a = generator(500)
+    const a = generator(50)
     const b = [...a]
     a.sort((a, b) => a - b)
     sort.bubbleSort(b)

@@ -8,7 +8,7 @@ import { updateBar } from './updateBar'
  * @param {svgElement} svg
  * @param {number[]} data
  */
-export function insertionVisual (svg, data) {
+export function insertionVisual (svg, data, timeout = 200) {
   const process = insertionSort(data)
 
   /* visualized the process of sorting */
@@ -19,5 +19,5 @@ export function insertionVisual (svg, data) {
     index += 1
     if (index === length - 1) clearInterval(timer)
     updateBar(svg, process[index])
-  }, 2000)
+  }, timeout)
 }

@@ -8,11 +8,11 @@ import { extent, max } from 'd3-array'
  * @export
  * @param {svgElement} svg
  * @param {object[]} data
- *
+ * @param {number} timeout
  *
  */
-export function updateBar (svg, data) {
-  const duration = transition().duration(1000)
+export function updateBar (svg, data, timeout = 200) {
+  const start = transition().duration(timeout)
   const { data: a, i, j } = data
   const height = max([...a, 30])
   const rectWidth = 20
@@ -47,6 +47,6 @@ export function updateBar (svg, data) {
       'fill',
       (d, index) => (index === i ? 'red' : index === j ? 'red' : 'blue')
     )
-    .transition(duration)
+    .transition(start)
     .attr('x', (d, i) => margin.left + i * rectWidth)
 }

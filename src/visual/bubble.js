@@ -7,8 +7,9 @@ import { bubbleSort } from '../sort'
  * @export
  * @param {*} svg
  * @param {number[]} data
+ * @param {timeout} timeout
  */
-export function bubbleVisual (svg, data) {
+export function bubbleVisual (svg, data, timeout = 200) {
   const process = bubbleSort(data)
   const length = process.length
   let index = 0
@@ -17,5 +18,5 @@ export function bubbleVisual (svg, data) {
     index += 1
     if (index === length - 1) clearInterval(timer)
     updateBar(svg, process[index])
-  }, 2000)
+  }, timeout)
 }
