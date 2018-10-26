@@ -1,5 +1,5 @@
 import { insertionSort } from '../sort'
-import { updateBar } from './updateBar'
+import { visualize } from './visualize'
 
 /**
  *
@@ -10,14 +10,5 @@ import { updateBar } from './updateBar'
  */
 export function insertionVisual (svg, data, timeout = 200) {
   const process = insertionSort(data)
-
-  /* visualized the process of sorting */
-  const length = process.length
-  let index = 0
-  updateBar(svg, process[index])
-  const timer = setInterval(() => {
-    index += 1
-    if (index === length - 1) clearInterval(timer)
-    updateBar(svg, process[index])
-  }, timeout)
+  visualize(svg, process, timeout)
 }

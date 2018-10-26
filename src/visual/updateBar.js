@@ -13,11 +13,11 @@ import { extent, max } from 'd3-array'
  */
 export function updateBar (svg, data, timeout = 200) {
   const start = transition().duration(timeout)
-  const { data: a, i, j } = data
-  const height = max([...a, 30])
+  const { data: a, i: i = -1, j: j = -1, k: k = -2 } = data
+  const height = max([...a, 300])
   const rectWidth = 20
   const margin = { top: 10, right: 10, bottom: 10, left: 10 }
-  const width = rectWidth * max([5, a.length]) + margin.left + margin.right
+  const width = rectWidth * max([20, a.length]) + margin.left + margin.right
   const [_, yMax] = extent(a) //eslint-disable-line
 
   svg.attr('width', width).attr('height', height)
@@ -45,7 +45,12 @@ export function updateBar (svg, data, timeout = 200) {
     .attr('height', d => heightScale(d))
     .attr(
       'fill',
-      (d, index) => (index === i ? 'red' : index === j ? 'red' : 'blue')
+      (d, index) =>
+        index === i ? 'red' : index === j ? 'red' : index === k ? 'red' : 'blue'
+    )
+    .attr(
+      'opacity',
+      (d, index) => (index === i ? 1 : index === j ? 1 : index === k ? 1 : 0.3)
     )
     .transition(start)
     .attr('x', (d, i) => margin.left + i * rectWidth)

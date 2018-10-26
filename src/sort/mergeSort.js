@@ -7,16 +7,38 @@ import { insertionSort } from './insertionSort'
  * @param {!number} hi The end index
  */
 export function mergeSort (source, flag = false, lo = 0, hi) {
+  const process = []
+  const auxProcess = []
   hi = hi || source.length - 1
-  sort(source, [], lo, hi, flag)
+  sort(source, [...source], lo, hi, flag, process, auxProcess)
+  return { process, auxProcess }
 }
-function sort (source, aux, lo, hi, flag) {
-  if (hi <= lo + 4) {
-    insertionSort(source, lo, hi, flag)
-    return
+function sort (source, aux, lo, hi, flag, process, auxProcess) {
+  if (flag) {
+    if (hi <= lo + 4) {
+      insertionSort(source, lo, hi, flag)
+      return
+    }
+    const mid = Math.floor(lo + (hi - lo) / 2)
+    sort(source, aux, lo, mid, flag)
+    sort(source, aux, mid + 1, hi, flag)
+    merge(source, aux, lo, mid, hi)
+  } else {
+    if (hi <= lo + 4) {
+      const result = insertionSort(source, lo, hi, flag)
+      process.push(result)
+      auxProcess.push(
+        result.map(v => {
+          const data = new Array(v.data.length)
+          data.fill(0)
+          return { ...v, data }
+        })
+      )
+      return
+    }
+    const mid = Math.floor(lo + (hi - lo) / 2)
+    sort(source, aux, lo, mid, flag, process, auxProcess)
+    sort(source, aux, mid + 1, hi, flag, process, auxProcess)
+    merge(source, aux, lo, mid, hi, process, auxProcess)
   }
-  const mid = Math.floor(lo + (hi - lo) / 2)
-  sort(source, aux, lo, mid, flag)
-  sort(source, aux, mid + 1, hi, flag)
-  merge(source, aux, lo, mid, hi)
 }

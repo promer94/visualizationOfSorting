@@ -1,5 +1,5 @@
-import { updateBar } from './updateBar'
 import { bubbleSort } from '../sort'
+import { visualize } from './visualize'
 
 /**
  * @description The visualization of bubble sort
@@ -11,12 +11,5 @@ import { bubbleSort } from '../sort'
  */
 export function bubbleVisual (svg, data, timeout = 200) {
   const process = bubbleSort(data)
-  const length = process.length
-  let index = 0
-  updateBar(svg, process[index])
-  const timer = setInterval(() => {
-    index += 1
-    if (index === length - 1) clearInterval(timer)
-    updateBar(svg, process[index])
-  }, timeout)
+  visualize(svg, process, timeout)
 }
