@@ -4,10 +4,10 @@ import { generator } from '../utils'
 
 describe('sort', () => {
   test('mergeSort', () => {
-    const a = generator(10000)
+    const a = generator(100)
     const b = Array.from(a)
     a.sort((a, b) => a - b)
-    sort.mergeSort(b, true)
+    sort.mergeSort(b)
     a.forEach((v, i) => {
       expect(v).toEqual(b[i])
     })

@@ -2,12 +2,34 @@ import { exchange, less } from '../utils'
 
 /**
  *
- * @description the implementation of bubble sort
+ * @description
+ * The implementation of bubble sort
  * @export
  * @param {!number[]} data
- * @returns
+ *
  */
 export function bubbleSort (data) {
+  for (let i = 0; i < data.length - 1; i++) {
+    let count = 0
+    for (let j = 0; j < data.length - 1 - i; j++) {
+      if (less(data[j + 1], data[j])) {
+        exchange(data, j, j + 1)
+        count++
+      }
+    }
+    if (count === 0) break
+  }
+}
+/**
+ *
+ * @description
+ * The implementation of bubble sort
+ * return the whole process of sorting
+ * @export
+ * @param {number[]} data
+ * @returns
+ */
+export function bubbleSortForVisual (data) {
   const process = []
   for (let i = 0; i < data.length - 1; i++) {
     let count = 0

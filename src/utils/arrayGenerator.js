@@ -1,12 +1,21 @@
+/**
+ * @description Generate a random array with fixed length
+ *
+ * @export
+ * @param {number} length
+ * @returns
+ */
 export function generator (length) {
   const a = new Array(length)
-  a.fill(0).forEach((v, i, item) => (item[i] = i))
+  a.fill(0).forEach(
+    (v, i, item) => (item[i] = Math.floor(Math.random() * length) + 1)
+  )
   shuffle(a)
   return a
 }
 /**
- *
- *
+
+ * @description Make array to be random
  * @export
  * @param {number[]} a
  * @param {number} [lo=0]

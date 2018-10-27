@@ -4,9 +4,9 @@ import { extent, max } from 'd3-array'
 
 /**
  *
- * @description visualization of in place sorting algorithm
+ * @description The visualization of in place sorting algorithm
  * @export
- * @param {svgElement} svg
+ * @param {HTMLElement} svg
  * @param {object[]} data
  * @param {number} timeout
  *

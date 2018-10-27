@@ -1,4 +1,4 @@
-const oneLineQuickSort = arr =>
+export const oneLineQuickSort = arr =>
   arr.length <= 1
     ? arr
     : [

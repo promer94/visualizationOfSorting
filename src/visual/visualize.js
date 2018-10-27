@@ -3,7 +3,7 @@ import { updateBar } from './updateBar'
  *
  *
  * @export
- * @param {*} svg
+ * @param {HTMLElement} svg
  * @param {number} data
  * @param {number} timeout
  */
