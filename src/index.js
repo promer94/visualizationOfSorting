@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const auxSvg = select('div')
     .append('svg')
     .attr('id', 'aux')
-  const array = generator(10).map(v => v * 10 + 10)
+  const array = generator(10).map(v => v * 10 + 5)
   visual.mergeSortVisual(dataSvg, auxSvg, array, 200)
 })

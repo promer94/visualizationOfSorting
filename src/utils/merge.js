@@ -20,27 +20,27 @@ export function merge (source, aux, lo, mid, hi, process, auxProcess) {
     for (let k = lo; k <= hi; k++) {
       if (i > mid) {
         source[k] = aux[j]
-        auxProcess.push({ data: source.slice(0, k), k })
+        auxProcess.push({ data: source.slice(lo, k), k })
         process.push({ data: [...aux], i, j, hi })
         j++
       } else if (j > hi) {
         source[k] = aux[i]
-        auxProcess.push({ data: source.slice(0, k), k })
+        auxProcess.push({ data: source.slice(lo, k), k })
         process.push({ data: [...aux], i, j, hi })
         i++
       } else if (less(aux[j], aux[i])) {
         source[k] = aux[j]
-        auxProcess.push({ data: source.slice(0, k), k })
+        auxProcess.push({ data: source.slice(lo, k), k })
         process.push({ data: [...aux], i, j, hi })
         j++
       } else {
         source[k] = aux[i]
-        auxProcess.push({ data: source.slice(0, k), k })
+        auxProcess.push({ data: source.slice(lo, k), k })
         process.push({ data: [...aux], i, j, hi })
         i++
       }
     }
-    auxProcess.push({ data: [...source], k: -1 })
+    auxProcess.push({ data: [...source.slice(lo, hi + 1)], k: -1 })
     process.push({ data: [...aux], i: -1, j: -1, hi: -1 })
   } else {
     for (let k = lo; k <= hi; k++) {
