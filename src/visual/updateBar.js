@@ -46,7 +46,13 @@ export function updateBar (svg, data, timeout = 200) {
     .attr(
       'fill',
       (d, index) =>
-        index === i ? 'red' : index === j ? 'red' : index === k ? 'red' : 'blue'
+        index === i
+          ? 'red'
+          : index === j
+            ? 'red'
+            : index === k
+              ? 'black'
+              : 'blue'
     )
     .attr(
       'opacity',

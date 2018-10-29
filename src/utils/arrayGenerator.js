@@ -3,12 +3,14 @@
  *
  * @export
  * @param {number} length
+ * @param {boolean} [unique=true] flag for unique value
  * @returns
  */
-export function generator (length) {
+export function generator (length, unique = true) {
   const a = new Array(length)
   a.fill(0).forEach(
-    (v, i, item) => (item[i] = Math.floor(Math.random() * length) + 1)
+    (v, i, item) =>
+      (item[i] = unique ? i + 1 : Math.floor(Math.random() * length) + 1)
   )
   shuffle(a)
   return a
