@@ -6,7 +6,7 @@
  * @param {boolean} [unique=true] flag for unique value
  * @returns
  */
-export function generator (length, unique = true) {
+export function arrayGenerator (length, unique = true) {
   const a = new Array(length)
   a.fill(0).forEach(
     (v, i, item) =>

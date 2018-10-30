@@ -1,6 +1,6 @@
 import { scaleLinear } from 'd3-scale'
 import { transition } from 'd3-transition'
-import { extent, max } from 'd3-array'
+import { extent } from 'd3-array'
 
 /**
  *
@@ -14,13 +14,11 @@ import { extent, max } from 'd3-array'
 export function updateBar (svg, data, timeout = 200) {
   const start = transition().duration(timeout)
   const { data: a, i: i = -1, j: j = -1, k: k = -2 } = data
-  const height = max([...a, 300])
-  const rectWidth = 20
+  const height = parseFloat(svg.style('height'))
+  const width = parseFloat(svg.style('width'))
   const margin = { top: 10, right: 10, bottom: 10, left: 10 }
-  const width = rectWidth * max([20, a.length]) + margin.left + margin.right
+  const rectWidth = (width - margin.left - margin.right) / a.length
   const [_, yMax] = extent(a) //eslint-disable-line
-
-  svg.attr('width', width).attr('height', height)
   const yScale = scaleLinear()
     .domain([0, yMax])
     .range([height - margin.bottom, margin.top])
