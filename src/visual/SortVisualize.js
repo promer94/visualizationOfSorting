@@ -14,19 +14,42 @@ const sortTable = {
   quick: sort.quickSortForVisual
 }
 export class InPlaceSortingVisual extends Visual {
-  constructor (svg) {
-    super(svg)
-    this.method = this.id.split('-')[0]
+  constructor (id) {
+    super(id)
     this.start = this.start.bind(this)
     this.stepForward = this.stepForward.bind(this)
     this.stepBack = this.stepBack.bind(this)
-    this.process = sortTable[this.method]([...this.data])
+    this.stop = this.stop.bind(this)
+
+    this.process = sortTable[this.id]([...this.data])
     this.processLength = this.process.length
     updateBar(this.svgElement, { data: this.data }, this.timeout)
+    this.controller = {
+      startAndPause: document.getElementById(`${this.id}-start-pause`),
+      stop: document.getElementById(`${this.id}-stop`),
+      stepForward: document.getElementById(`${this.id}-stepForward`),
+      back: document.getElementById(`${this.id}-back`)
+    }
+    this.controller.startAndPause.addEventListener('click', e => {
+      if (this.timer === null) {
+        this.start()
+      } else {
+        this.pause()
+      }
+    })
+    this.controller.stop.addEventListener('click', () => {
+      this.stop()
+    })
+    this.controller.stepForward.addEventListener('click', () => {
+      this.stepForward()
+    })
+    this.controller.back.addEventListener('click', () => {
+      this.stepBack()
+    })
   }
   init (array = arrayGenerator(30, true)) {
     this.data = [...array]
-    this.process = sortTable[this.method]([...this.data])
+    this.process = sortTable[this.id]([...this.data])
     this.processLength = this.process.length
     updateBar(this.svgElement, { data: this.data }, this.timeout)
   }
@@ -49,6 +72,8 @@ export class InPlaceSortingVisual extends Visual {
   }
   start () {
     if (this.timer === null) {
+      this.controller.startAndPause.childNodes[0].className = `icon ion-md-pause`
+      this.controller.startAndPause.childNodes[1].innerText = `Pause`
       this.timer = setInterval(() => {
         this.indexOfProcess++
         if (this.indexOfProcess <= this.processLength - 1) {
@@ -59,15 +84,24 @@ export class InPlaceSortingVisual extends Visual {
           )
         } else {
           clearInterval(this.timer)
+          this.controller.startAndPause.childNodes[0].className = `icon ion-md-play`
+          this.controller.startAndPause.childNodes[1].innerText = `Start`
         }
       }, this.timeout)
     }
   }
   pause () {
-    clearInterval(this.timer)
+    if (this.timer !== null) {
+      this.controller.startAndPause.childNodes[0].className = `icon ion-md-play`
+      this.controller.startAndPause.childNodes[1].innerText = `Start`
+      clearInterval(this.timer)
+      this.timer = null
+    }
   }
   stop () {
     clearInterval(this.timer)
+    this.controller.startAndPause.childNodes[0].className = `icon ion-md-play`
+    this.controller.startAndPause.childNodes[1].innerText = `Start`
     this.indexOfProcess = 0
     this.timer = null
     this.init()

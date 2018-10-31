@@ -5,7 +5,7 @@ export default class TypeWriter {
     this.txt = ''
     this.wordIndex = 0
     this.wait =
-      parseInt(JSON.parse(this.element.getAttribute('data-wait'))) || 3000
+      parseInt(JSON.parse(this.element.getAttribute('data-wait'))) || 1000
     this.isDeleting = false
     this.timer = null
     this.getCurrentWord = this.getCurrentWord.bind(this)

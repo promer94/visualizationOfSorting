@@ -1,5 +1,4 @@
 @import './dank-mono.css';
-@import './normalize.css';
 @import "../../node_modules/bulma/bulma.sass";
 @import "../../node_modules/ionicons/dist/css/ionicons.min.css";
 body{
@@ -77,7 +76,7 @@ body{
       height: 90%;
     }
     .controller{
-      width: 70%;
+      width: 100%;
       justify-content: space-evenly;
       align-items: center;
     }
