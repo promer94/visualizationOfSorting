@@ -4,9 +4,17 @@ import { select } from 'd3-selection'
  *
  *
  * @export
- * @class Visual
+ * @class
+ * Creating the container for visualization
  */
 export default class Visual {
+  /**
+   *Creates an instance of Visual.
+   * @param {string} id the name of sort
+   * @param {number[]} [data=arrayGenerator(30)]
+   * @param {number} [timeout=200]
+   * @memberof Visual
+   */
   constructor (id, data = arrayGenerator(30), timeout = 200) {
     this.id = id
     this.render()
@@ -22,6 +30,11 @@ export default class Visual {
   stepForward () {}
   stepBack () {}
   stop () {}
+  /**
+   * @description render the container into html
+   *
+   * @memberof Visual
+   */
   render () {
     document.getElementById(this.id).innerHTML = `
     <div class="columns is-multiline full-height">

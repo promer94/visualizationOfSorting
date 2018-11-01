@@ -1,4 +1,4 @@
-import { merge, mergeForVisual } from '../utils'
+import { merge, mergeForVisual, flatArray } from '../utils'
 import { insertionSort, insertionSortForVisual } from './insertionSort'
 /**
  * @description The top-down merge sort implementation
@@ -31,10 +31,12 @@ function sort (source, aux, lo, hi) {
  * @returns
  */
 export function mergeSortForVisual (source, lo = 0, hi) {
-  const process = []
-  const auxProcess = []
+  let process = []
+  let auxProcess = []
   hi = hi || source.length - 1
   sortForVisual(source, [...source], lo, hi, process, auxProcess)
+  process = flatArray(process)
+  auxProcess = flatArray(auxProcess)
   return { process, auxProcess }
 }
 function sortForVisual (source, aux, lo, hi, process, auxProcess) {
