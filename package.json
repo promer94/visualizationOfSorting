@@ -7,7 +7,7 @@
     "precommit": "lint-staged",
     "lint": "standard --fix",
     "start": "parcel index.html",
-    "build": "parcel build index.html --public-url .",
+    "build": "parcel build index.html --public-url /d3AndSorting",
     "test": "jest --verbose"
   },
   "lint-staged": {
