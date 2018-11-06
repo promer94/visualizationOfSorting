@@ -80,7 +80,7 @@ typings/
 /dist
 /tmp
 /out-tsc
-
+/d3AndSorting
 # Runtime data
 pids
 *.pid

@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "standard --fix",
     "start": "parcel index.html",
-    "build": "parcel build index.html --public-url /d3AndSorting",
+    "build": "parcel build index.html --public-url /d3AndSorting --out-dir d3AndSorting",
     "test": "jest --verbose"
   },
   "lint-staged": {
