@@ -264,19 +264,19 @@ export class MergeSortingVisual extends Visual {
           <svg>
           </svg>
           <svg></svg>
-          <div class="one-height is-inline-flex controller">
+          <div class="one-height is-flex controller">
             <button id="${
   this.id
-}-start-pause" class="button is-primary"><i class="icon ion-md-play"></i><span>Start</span></button>
+}-start-pause" class="button is-primary is-small"><i class="icon ion-md-play"></i><span>Start</span></button>
             <button id="${
   this.id
-}-stop" class="button is-primary"><i class="icon ion-md-square"></i><span>Stop</span></button>
+}-stop" class="button is-primary is-small"><i class="icon ion-md-square"></i><span>Stop</span></button>
             <button id="${
   this.id
-}-back" class="button is-primary"><i class="icon ion-md-rewind"></i><span>Back</span></button>
+}-back" class="button is-primary is-small"><i class="icon ion-md-rewind"></i><span>Back</span></button>
             <button id="${
   this.id
-}-stepForward" class="button is-primary"><i class="icon ion-md-fastforward"></i><span>Forward</span></button>
+}-stepForward" class="button is-primary is-small"><i class="icon ion-md-fastforward"></i><span>Forward</span></button>
           </div>
         </div>
     </div>
