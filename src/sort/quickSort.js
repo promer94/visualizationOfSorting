@@ -1,4 +1,4 @@
-import { partition, shuffle, partitionForVisual } from '../utils'
+import { partition, shuffle, partitionForVisual, exchange } from '../utils'
 /**
  *
  * @description simplified implementation of quick sort
@@ -18,16 +18,21 @@ export function oneLineQuickSort (data) {
 /**
  *
  * @description
- * the implementation of two-way quick sort
+ * the implementation of two-way and three-way quick sort
  * @export
  * @param {number[]} data
  * @param {number} [lo=0]
  * @param {number} hi
+ * @param {boolean} [isThreeWay=false]
  */
-export function quickSort (data, lo = 0, hi) {
+export function quickSort (data, lo = 0, hi, isThreeWay = false) {
   hi = hi || data.length - 1
   shuffle(data)
-  sort(data, lo, hi)
+  if (!isThreeWay) {
+    sort(data, lo, hi)
+  } else {
+    threeWaySort(data, lo, hi)
+  }
 }
 
 function sort (data, lo, hi) {
@@ -35,6 +40,26 @@ function sort (data, lo, hi) {
   const j = partition(data, lo, hi)
   sort(data, lo, j - 1)
   sort(data, j + 1, hi)
+}
+function threeWaySort (data, lo, hi) {
+  if (hi <= lo) {
+    return
+  }
+  let lt = lo
+  let gt = hi
+  let i = lo
+  const pivot = data[lo]
+  while (i <= gt) {
+    if (data[i] < pivot) {
+      exchange(data, lt++, i++)
+    } else if (data[i] > pivot) {
+      exchange(data, i, gt--)
+    } else {
+      i++
+    }
+  }
+  threeWaySort(data, lo, lt - 1)
+  threeWaySort(data, gt + 1, hi)
 }
 /**
  *
